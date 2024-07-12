@@ -3,10 +3,12 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  root: '.', // Establece la raíz del proyecto
   build: {
     rollupOptions: {
-      input: 'index.html',
-    },
-  },
+      input: 'index.html',  // Asegura que rollup use index.html como punto de entrada
+      external: [
+        '/src/main.jsx'  // Agrega main.jsx a las dependencias externas
+      ]
+    }
+  }
 })
